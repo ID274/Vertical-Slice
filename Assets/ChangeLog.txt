@@ -1,0 +1,14 @@
+Change Log for Vertical Slice project
+Note: Changes will be saved on playmode exit
+
+
+Change 1
+Date: 18/03/24
+Author: Ignacy
+Change Description: Created project and implemented a simple fog of war mechanic.
+
+
+Change 2
+Date: 20/03/24
+Author: Ignacy
+Change Description: Created this changelog script and file.
