@@ -64,13 +64,17 @@ public class PlayerScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        TileScript tileInstance = collision.gameObject.GetComponent<TileScript>();
-        tileInstance.PlayerEnteredRange();
+        if (collision.TryGetComponent<TileScript>(out TileScript tileInstance))
+        {
+            tileInstance.PlayerEnteredRange();
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        TileScript tileInstance = collision.gameObject.GetComponent<TileScript>();
-        tileInstance.PlayerLeftRange();
+        if (collision.TryGetComponent<TileScript>(out TileScript tileInstance))
+        {
+            tileInstance.PlayerLeftRange();
+        }
     }
 
     private IEnumerator MovePlayer()
