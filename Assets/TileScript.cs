@@ -22,7 +22,7 @@ public class TileScript : MonoBehaviour
     void Update()
     {
         //distanceFromPlayer = Vector3.Distance(transform.position, player.transform.position);
-        
+
     }
 
     private void TestColors()

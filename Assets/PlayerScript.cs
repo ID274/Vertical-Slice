@@ -9,6 +9,10 @@ public class PlayerScript : MonoBehaviour
     [Header("Attributes")]
     [SerializeField] public float sightRange;
     [SerializeField] public Vector3 up, down, left, right; //Look directions
+    [SerializeField] private int moveSpeed;
+
+    private Vector3 pos;
+    private Vector3 newPos;
 
     private bool moving;
 
@@ -28,6 +32,7 @@ public class PlayerScript : MonoBehaviour
 
     void Update()
     {
+        pos = transform.position;
         if (Input.GetKey("w"))
         {
             if (!moving)
@@ -82,25 +87,29 @@ public class PlayerScript : MonoBehaviour
         moving = true;
         if (transform.eulerAngles == up)
         {
-            transform.position += new Vector3(0, 1, 0);
+            newPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+            transform.position = Vector3.Slerp(pos, newPos, moveSpeed);
             yield return new WaitForSecondsRealtime(0.1f);
         }
         if (transform.eulerAngles == down)
         {
-            transform.position += new Vector3(0, -1, 0);
+            newPos = new Vector3(transform.position.x, transform.position.y - 1, transform.position.z);
+            transform.position = Vector3.Slerp(pos, newPos, moveSpeed);
             yield return new WaitForSecondsRealtime(0.1f);
         }
         if (transform.eulerAngles == left)
         {
-            transform.position += new Vector3(-1, 0, 0);
+            newPos = new Vector3(transform.position.x - 1, transform.position.y, transform.position.z);
+            transform.position = Vector3.Slerp(pos, newPos, moveSpeed);
             yield return new WaitForSecondsRealtime(0.1f);
         }
         if (transform.eulerAngles == right)
         {
-            Debug.Log("Right through");
-            transform.position += new Vector3(1, 0, 0);
+            newPos = new Vector3(transform.position.x + 1, transform.position.y, transform.position.z);
+            transform.position = Vector3.Slerp(pos, newPos, moveSpeed);
             yield return new WaitForSecondsRealtime(0.1f);
         }
         moving = false;
     }
 }
+

@@ -12,3 +12,9 @@ Change 2
 Date: 20/03/24
 Author: Ignacy
 Change Description: Created this changelog script and file. Also changed order in layers and made collision script more future-proof.
+
+
+Change 3
+Date: 21/03/24
+Author: Ignacy
+Change Description: Added cinemachine to the project, increased size of fog of war. Attempted to implement wall interactions with fog of war but was unsuccessful.
