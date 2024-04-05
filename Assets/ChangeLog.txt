@@ -24,3 +24,9 @@ Change 4
 Date: 28/03/24
 Author: Ignacy
 Change Description: Added a different approach to field of view, added onscreen ui buttons for movement, implemented a movement script.
+
+
+Change 5
+Date: 05/04/24
+Author: Ignacy
+Change Description: Added a simple level, item counter, timer and an enemy using navmesh. Currently bugged, should fix it soon.
