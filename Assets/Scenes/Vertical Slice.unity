@@ -1491,6 +1491,10 @@ MonoBehaviour:
   - Ignacy
   - Added a different approach to field of view, added onscreen ui buttons for movement,
     implemented a movement script.
+  - 05/04/24
+  - Ignacy
+  - Added a simple level, item counter, timer and an enemy using navmesh. Currently
+    bugged, should fix it soon.
 --- !u!4 &352274594
 Transform:
   m_ObjectHideFlags: 0
@@ -5537,7 +5541,6 @@ SceneRoots:
   - {fileID: 1331266977}
   - {fileID: 1630627362}
   - {fileID: 1088044956}
-  - {fileID: 352274594}
   - {fileID: 1568072309}
   - {fileID: 98622224}
   - {fileID: 1627943798}
@@ -5546,3 +5549,4 @@ SceneRoots:
   - {fileID: 1727814008}
   - {fileID: 539293035}
   - {fileID: 520749324}
+  - {fileID: 352274594}

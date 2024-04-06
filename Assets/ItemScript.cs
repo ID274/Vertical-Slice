@@ -13,7 +13,10 @@ public class ItemScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        LevelManager.Instance.itemsCollected++;
-        Destroy(gameObject);
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            LevelManager.Instance.itemsCollected++;
+            Destroy(gameObject);
+        }
     }
 }

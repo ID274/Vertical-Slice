@@ -30,3 +30,9 @@ Change 5
 Date: 05/04/24
 Author: Ignacy
 Change Description: Added a simple level, item counter, timer and an enemy using navmesh. Currently bugged, should fix it soon.
+
+
+Change 6
+Date: 06/04/24
+Author: Ignacy
+Change Description: Split navmesh movement on patrols to only use navmesh for chasing the player and returrning to patrol, now the patrol function is done with normal movement. Added rotating function for patrols, as well as a game over and victory screen and a star rating. Star rating currently works off of how many items/scrap the player has collected, but that is subject to change in the future.

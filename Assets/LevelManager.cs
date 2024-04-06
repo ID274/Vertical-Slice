@@ -2,11 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using JetBrains.Annotations;
 
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
+
+    [SerializeField] private GameObject gameOverScreen;
+    [SerializeField] private TextMeshProUGUI gameOverItems;
+    [SerializeField] private TextMeshProUGUI gameOverTime;
+
+    [SerializeField] private GameObject victoryScreen;
+    [SerializeField] private TextMeshProUGUI victoryItems;
+    [SerializeField] private TextMeshProUGUI victoryTime;
+    [SerializeField] private GameObject starRating1, starRating2, starRating3;
+
 
     [SerializeField] private int secondsToComplete;
     [SerializeField] private TextMeshProUGUI counterText;
@@ -41,10 +50,38 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        gameOverItems.text = $"Scrap Collected: {itemsCollected}/{totalItems}";
+        gameOverTime.text = $"Time Left: {secondsRemaining.ToString()}";
+
+        victoryItems.text = $"Scrap Collected: {itemsCollected}/{totalItems}";
+        victoryTime.text = $"Time Left: {secondsRemaining.ToString()}";
+        switch (itemsCollected)
+        {
+            case 0:
+                break;
+            case 1:
+                starRating1.SetActive(true);
+                break;
+            case 2:
+                starRating1.SetActive(true);
+                starRating2.SetActive(true);
+                break;
+            case 3:
+                starRating1.SetActive(true);
+                starRating2.SetActive(true);
+                starRating3.SetActive(true);
+                break;
+        }
+
         counterText.text = $"Time Left: {secondsRemaining.ToString()}";
         if (secondsRemaining <= 10)
         {
             counterText.color = Color.red;
+        }
+        if (secondsRemaining <= 0)
+        {
+            Time.timeScale = 0f;
+            gameOverScreen.SetActive(true);
         }
         itemsText.text = $"Scrap Collected: {itemsCollected}/{totalItems}";
         if (itemsCollected == totalItems && !allItemsCollected)
@@ -59,9 +96,12 @@ public class LevelManager : MonoBehaviour
     {
         for (int i = 0; i < secondsToComplete; i++)
         {
-            yield return new WaitForSecondsRealtime(1f);
-            secondsRemaining--;
-            secondsPassed++;
+            if (!gameOverScreen.activeSelf && !victoryScreen.activeSelf)
+            {
+                yield return new WaitForSecondsRealtime(1f);
+                secondsRemaining--;
+                secondsPassed++;
+            }
         }
         Time.timeScale = 0f;
     }
