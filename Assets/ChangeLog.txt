@@ -36,3 +36,9 @@ Change 6
 Date: 06/04/24
 Author: Ignacy
 Change Description: Split navmesh movement on patrols to only use navmesh for chasing the player and returrning to patrol, now the patrol function is done with normal movement. Added rotating function for patrols, as well as a game over and victory screen and a star rating. Star rating currently works off of how many items/scrap the player has collected, but that is subject to change in the future.
+
+
+Change 7
+Date: 14/04/24
+Author: Ignacy
+Change Description: Added sprites for star rating and scrap. Made the scrap into an item prefab for easier use. Also added a retry button that reloads the scene.

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -28,8 +29,11 @@ public class LevelManager : MonoBehaviour
     public int totalItems;
     private bool allItemsCollected = false;
 
+    private string currentSceneName;
+
     private void Awake()
     {
+        currentSceneName = SceneManager.GetActiveScene().name;
         if (Instance != null && Instance != this)
         {
             Destroy(this);
@@ -116,5 +120,11 @@ public class LevelManager : MonoBehaviour
             yield return new WaitForSecondsRealtime(0.5f);
         }
         findExitText.SetActive(false);
+    }
+
+    public void ReloadLevel()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(currentSceneName);
     }
 }
